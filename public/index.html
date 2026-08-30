@@ -445,10 +445,10 @@
   <div id="top-loading-bar"></div>
 
   <!-- Promo Top Bar -->
-  <aside onclick="openPromoModal()" class="cursor-pointer border-b hairline bg-ink text-zinc-400 py-2 px-3 text-center text-[9px] sm:text-[10px] uppercase tracking-[0.16em] font-medium flex items-center justify-center gap-2 hover:text-white transition-colors">
-    <span class="flex items-center gap-1.5 truncate">
-      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping shrink-0"></span>
-      <span class="truncate">Promo Langganan Baru &bull; Diskon 50% Kode <strong class="text-white font-bold underline">PREMIUM50</strong> &bull; Klik Klaim</span>
+  <aside onclick="openPromoModal()" class="cursor-pointer border-b hairline bg-ink py-2 px-3 text-center text-[9px] sm:text-[10px] uppercase tracking-[0.16em] font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+    <span class="flex items-center gap-1.5 truncate text-zinc-700 dark:text-zinc-400">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping shrink-0"></span>
+      <span class="truncate">Promo Langganan Baru &bull; Diskon 50% Kode <strong class="text-blue-600 dark:text-white font-bold underline">PREMIUM50</strong> &bull; Klik Klaim</span>
     </span>
   </aside>
 
@@ -628,20 +628,20 @@
           <span class="hidden sm:inline">Pilih Aplikasi Lain</span>
           <span class="sm:hidden">Kembali</span>
         </button>
-        <span class="text-zinc-600">/</span>
-        <h1 class="text-xs sm:text-base font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-          <i data-lucide="shopping-cart" class="w-4 h-4 text-white"></i>
+        <span class="text-zinc-400 dark:text-zinc-600">/</span>
+        <h1 class="text-xs sm:text-base font-bold brand-heading uppercase tracking-wider flex items-center gap-1.5">
+          <i data-lucide="shopping-cart" class="w-4 h-4"></i>
           <span>Keranjang Langganan</span>
         </h1>
       </div>
-      <div class="text-[11px] text-zinc-400 font-mono hidden sm:flex items-center gap-2">
-        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+      <div class="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono hidden sm:flex items-center gap-2">
+        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
         <span>Pengiriman Instan & Full Garansi</span>
       </div>
     </div>
 
-    <div id="cart-empty-view" class="hidden p-8 sm:p-20 text-center space-y-4 sm:space-y-5 bg-ink border hairline">
-      <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-obsidian border hairline flex items-center justify-center mx-auto text-zinc-500">
+    <div id="cart-empty-view" class="hidden p-8 sm:p-20 text-center space-y-4 sm:space-y-5 bg-ink border hairline shadow-sm">
+      <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-surface border hairline flex items-center justify-center mx-auto text-zinc-500">
         <i data-lucide="shopping-cart" class="w-6 h-6 sm:w-8 sm:h-8"></i>
       </div>
       <div class="space-y-1">
@@ -655,24 +655,24 @@
     </div>
 
     <div id="cart-filled-view" class="space-y-4 sm:space-y-6">
-      <div class="bg-ink border hairline px-6 py-3.5 hidden md:grid md:grid-cols-12 gap-4 text-xs font-semibold text-zinc-400 uppercase tracking-wider items-center">
+      <div class="bg-surface border hairline px-6 py-3.5 hidden md:grid md:grid-cols-12 gap-4 text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider items-center">
         <div class="col-span-6 flex items-center gap-3">
-          <input type="checkbox" id="chk-select-all" checked onchange="toggleSelectAllItems(this)" class="w-4 h-4 rounded border-zinc-700 bg-obsidian text-white cursor-pointer">
-          <label for="chk-select-all" class="cursor-pointer text-white">Aplikasi Premium</label>
+          <input type="checkbox" id="chk-select-all" checked onchange="toggleSelectAllItems(this)" class="w-4 h-4 rounded border-zinc-400 dark:border-zinc-700 bg-surface cursor-pointer">
+          <label for="chk-select-all" class="cursor-pointer brand-heading">Aplikasi Premium</label>
         </div>
         <div class="col-span-2 text-center">Harga Satuan</div>
         <div class="col-span-2 text-center">Durasi</div>
         <div class="col-span-2 text-right">Total Tagihan</div>
       </div>
 
-      <div class="bg-ink border hairline divide-y hairline">
-        <div class="p-3.5 sm:px-6 bg-obsidian/70 flex items-center justify-between">
+      <div class="bg-ink border hairline divide-y hairline shadow-sm">
+        <div class="p-3.5 sm:px-6 bg-surface flex items-center justify-between">
           <div class="flex items-center gap-2 sm:gap-3">
-            <span class="text-[8px] sm:text-[9px] bg-white text-obsidian px-1.5 py-0.5 font-bold uppercase tracking-wider">Official</span>
-            <span class="text-xs font-bold text-white truncate">FalStore Premium Suite</span>
+            <span class="text-[8px] sm:text-[9px] bg-blue-600 text-white px-1.5 py-0.5 font-bold uppercase tracking-wider rounded-sm">Official</span>
+            <span class="text-xs font-bold brand-heading truncate">FalStore Premium Suite</span>
           </div>
-          <span class="text-[10px] text-emerald-400 font-mono flex items-center gap-1 shrink-0">
-            <i data-lucide="zap" class="w-3.5 h-3.5"></i> Pengiriman Instan Digital
+          <span class="text-[10px] text-emerald-500 font-mono flex items-center gap-1 shrink-0 font-semibold">
+            <i data-lucide="clock" class="w-3.5 h-3.5"></i> Pengiriman Instan Digital
           </span>
         </div>
 
@@ -681,21 +681,21 @@
 
       <!-- Mobile & Desktop Sticky Bottom Summary Bar -->
       <div class="sticky bottom-14 md:bottom-0 z-30 bg-ink border hairline p-3.5 sm:p-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 backdrop-blur-md">
-        <div class="flex items-center justify-between w-full md:w-auto gap-4 text-xs text-zinc-400">
+        <div class="flex items-center justify-between w-full md:w-auto gap-4 text-xs text-zinc-500 dark:text-zinc-400">
           <label class="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" id="chk-select-all-bottom" checked onchange="toggleSelectAllItems(this)" class="w-4 h-4 rounded border-zinc-700 bg-obsidian text-white cursor-pointer">
-            <span class="text-white font-medium text-xs">Pilih Semua (<span id="cart-selected-count">0</span>)</span>
+            <input type="checkbox" id="chk-select-all-bottom" checked onchange="toggleSelectAllItems(this)" class="w-4 h-4 rounded border-zinc-400 dark:border-zinc-700 bg-surface cursor-pointer">
+            <span class="brand-heading font-medium text-xs">Pilih Semua (<span id="cart-selected-count">0</span>)</span>
           </label>
-          <button type="button" onclick="clearCartItems()" class="text-zinc-500 hover:text-rose-400 text-[11px] underline uppercase tracking-wider">Hapus</button>
+          <button type="button" onclick="clearCartItems()" class="text-zinc-500 hover:text-rose-500 text-[11px] underline uppercase tracking-wider">Hapus</button>
         </div>
 
         <div class="flex items-center justify-between md:justify-end w-full md:w-auto gap-3 sm:gap-6">
           <div class="text-left md:text-right">
-            <div class="text-xs text-zinc-400 flex items-baseline gap-1.5 sm:gap-2">
+            <div class="text-xs text-zinc-500 dark:text-zinc-400 flex items-baseline gap-1.5 sm:gap-2">
               <span class="text-[11px]">Total:</span>
-              <span id="cart-page-total" class="text-sm sm:text-xl font-extrabold font-mono text-white">Rp 0</span>
+              <span id="cart-page-total" class="text-sm sm:text-xl font-extrabold font-mono text-blue-600 dark:text-white">Rp 0</span>
             </div>
-            <span class="text-[9px] text-emerald-400 block">Biaya Kirim Digital: Rp 0 (Gratis)</span>
+            <span class="text-[9px] text-emerald-500 font-medium block">Biaya Kirim Digital: Rp 0 (Gratis)</span>
           </div>
 
           <button type="button" onclick="proceedToShopeeCheckout()" id="btn-cart-checkout" class="btn-cta-primary h-11 sm:h-12 px-6 sm:px-8 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] font-extrabold flex items-center justify-center gap-2 transition-all shadow-lg shrink-0">
@@ -1593,13 +1593,15 @@
               itemsHTML += `
                 <div class="flex items-center justify-between text-xs py-2 border-b hairline">
                   <div class="flex items-center gap-2.5 sm:gap-3">
-                    <img src="${escapeHTML(i.image)}" class="w-9 h-11 sm:w-10 sm:h-12 object-cover bg-zinc-900 border hairline">
+                    <div class="w-9 h-11 sm:w-10 sm:h-12 bg-white dark:bg-zinc-900 border hairline flex items-center justify-center p-1.5 rounded-sm">
+                      <img src="${escapeHTML(i.image)}" class="w-full h-full object-contain">
+                    </div>
                     <div>
-                      <div class="font-semibold text-white text-xs truncate max-w-[140px] sm:max-w-none">${escapeHTML(i.name)}</div>
+                      <div class="font-semibold brand-heading text-xs truncate max-w-[140px] sm:max-w-none">${escapeHTML(i.name)}</div>
                       <div class="text-[10px] text-zinc-500 font-mono">${formatRupiah(i.price)} &times; ${i.qty}</div>
                     </div>
                   </div>
-                  <div class="font-mono font-bold text-white text-xs">${formatRupiah(i.price * i.qty)}</div>
+                  <div class="font-mono font-bold brand-heading text-xs">${formatRupiah(i.price * i.qty)}</div>
                 </div>
               `;
             });
@@ -1607,22 +1609,22 @@
             card.innerHTML = `
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2 border-b hairline pb-2.5">
                 <div class="flex items-center gap-2 sm:gap-3">
-                  <span class="font-mono text-white font-bold text-xs">${escapeHTML(order.id)}</span>
-                  <span class="text-zinc-500 text-xs">&bull;</span>
-                  <span class="text-[11px] text-zinc-400 font-mono">${new Date(order.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                  <span class="font-mono brand-heading font-bold text-xs">${escapeHTML(order.id)}</span>
+                  <span class="text-zinc-400 text-xs">&bull;</span>
+                  <span class="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">${new Date(order.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                 </div>
-                <span class="px-2 py-0.5 bg-obsidian border hairline text-[9px] uppercase tracking-wider text-emerald-400 font-mono font-bold self-start sm:self-auto">${escapeHTML(order.status)}</span>
+                <span class="px-2 py-0.5 bg-surface border hairline text-[9px] uppercase tracking-wider text-emerald-500 font-mono font-bold self-start sm:self-auto">${escapeHTML(order.status)}</span>
               </div>
 
               <div class="space-y-0.5">${itemsHTML}</div>
 
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 pt-1">
-                <div class="text-[11px] text-zinc-400 font-mono">
-                  Pengiriman: <b class="text-white uppercase">${escapeHTML(order.delivery_method)}</b> &bull; Bayar: <b class="text-white uppercase">${escapeHTML(order.payment_method)}</b>
+                <div class="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">
+                  Pengiriman: <b class="brand-heading uppercase">${escapeHTML(order.delivery_method)}</b> &bull; Bayar: <b class="brand-heading uppercase">${escapeHTML(order.payment_method)}</b>
                 </div>
                 <div class="flex items-baseline gap-2 sm:justify-end">
-                  <span class="text-xs text-zinc-400">Total:</span>
-                  <span class="text-sm sm:text-base font-extrabold font-mono text-white">${formatRupiah(order.total_amount)}</span>
+                  <span class="text-xs text-zinc-500 dark:text-zinc-400">Total:</span>
+                  <span class="text-sm sm:text-base font-extrabold font-mono text-blue-600 dark:text-white">${formatRupiah(order.total_amount)}</span>
                 </div>
               </div>
             `;
@@ -1965,42 +1967,44 @@
         }
 
         const row = document.createElement('div');
-        row.className = 'p-3.5 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-center hover:bg-zinc-900/30 transition-colors';
+        row.className = 'p-3.5 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-center hover:bg-surface/50 transition-colors';
         row.innerHTML = `
           <div class="col-span-1 md:col-span-6 flex items-center gap-3 min-w-0">
-            <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleItemSelection('${escapeHTML(item.id)}', this.checked)" class="w-4 h-4 rounded border-zinc-700 bg-obsidian text-white cursor-pointer shrink-0">
-            <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" class="w-14 h-16 sm:w-20 sm:h-24 object-cover bg-zinc-900 shrink-0 border hairline">
+            <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleItemSelection('${escapeHTML(item.id)}', this.checked)" class="w-4 h-4 rounded border-zinc-400 dark:border-zinc-700 bg-surface cursor-pointer shrink-0">
+            <div class="w-14 h-16 sm:w-20 sm:h-24 bg-white dark:bg-zinc-900 shrink-0 border hairline p-2 flex items-center justify-center rounded-sm">
+              <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" class="w-full h-full object-contain">
+            </div>
             <div class="min-w-0 space-y-1 flex-1">
-              <h3 class="text-xs sm:text-sm font-bold text-white truncate cursor-pointer hover:underline" onclick="openProductDetail('${escapeHTML(item.id)}')">${escapeHTML(item.name)}</h3>
-              <div class="inline-block bg-obsidian px-1.5 py-0.5 border hairline text-[9px] sm:text-[10px] text-zinc-400 font-mono">
+              <h3 class="text-xs sm:text-sm font-bold brand-heading truncate cursor-pointer hover:underline" onclick="openProductDetail('${escapeHTML(item.id)}')">${escapeHTML(item.name)}</h3>
+              <div class="inline-block bg-surface px-1.5 py-0.5 border hairline text-[9px] sm:text-[10px] text-zinc-600 dark:text-zinc-400 font-mono">
                 Paket: Akun Privat / Legal
               </div>
               <div class="md:hidden pt-1 flex items-center justify-between">
-                <span class="text-xs font-mono font-bold text-white">${formatRupiah(item.price)}</span>
-                <div class="inline-flex border hairline items-center bg-obsidian">
-                  <button type="button" onclick="updateQty('${escapeHTML(item.id)}', -1)" class="w-6 h-6 flex items-center justify-center hover:bg-zinc-800 text-xs">-</button>
-                  <span class="w-7 text-center text-xs font-mono font-bold text-white">${item.qty}</span>
-                  <button type="button" onclick="updateQty('${escapeHTML(item.id)}', 1)" class="w-6 h-6 flex items-center justify-center hover:bg-zinc-800 text-xs">+</button>
+                <span class="text-xs font-mono font-bold brand-heading">${formatRupiah(item.price)}</span>
+                <div class="inline-flex border hairline items-center bg-surface">
+                  <button type="button" onclick="updateQty('${escapeHTML(item.id)}', -1)" class="w-6 h-6 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-800 text-xs brand-heading font-mono">-</button>
+                  <span class="w-7 text-center text-xs font-mono font-bold brand-heading">${item.qty}</span>
+                  <button type="button" onclick="updateQty('${escapeHTML(item.id)}', 1)" class="w-6 h-6 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-800 text-xs brand-heading font-mono">+</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="hidden md:block md:col-span-2 text-center text-xs font-mono font-semibold text-zinc-300">
+          <div class="hidden md:block md:col-span-2 text-center text-xs font-mono font-bold brand-heading">
             ${formatRupiah(item.price)}
           </div>
 
           <div class="hidden md:flex md:col-span-2 justify-center items-center gap-2">
-            <div class="inline-flex border hairline items-center bg-obsidian">
-              <button type="button" onclick="updateQty('${escapeHTML(item.id)}', -1)" class="w-7 h-7 flex items-center justify-center hover:bg-zinc-800 text-xs">-</button>
-              <span class="w-8 text-center text-xs font-mono font-bold text-white">${item.qty}</span>
-              <button type="button" onclick="updateQty('${escapeHTML(item.id)}', 1)" class="w-7 h-7 flex items-center justify-center hover:bg-zinc-800 text-xs">+</button>
+            <div class="inline-flex border hairline items-center bg-surface">
+              <button type="button" onclick="updateQty('${escapeHTML(item.id)}', -1)" class="w-7 h-7 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-800 text-xs brand-heading font-mono font-bold">-</button>
+              <span class="w-8 text-center text-xs font-mono font-bold brand-heading">${item.qty}</span>
+              <button type="button" onclick="updateQty('${escapeHTML(item.id)}', 1)" class="w-7 h-7 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-800 text-xs brand-heading font-mono font-bold">+</button>
             </div>
           </div>
 
           <div class="hidden md:flex md:col-span-2 flex-col items-end gap-1">
-            <span class="text-xs font-bold font-mono text-white">${formatRupiah(item.price * item.qty)}</span>
-            <button type="button" onclick="removeFromCart('${escapeHTML(item.id)}')" class="text-[10px] text-zinc-500 hover:text-rose-400 underline uppercase tracking-wider">Hapus</button>
+            <span class="text-xs font-bold font-mono brand-heading">${formatRupiah(item.price * item.qty)}</span>
+            <button type="button" onclick="removeFromCart('${escapeHTML(item.id)}')" class="text-[10px] text-zinc-500 hover:text-rose-500 underline uppercase tracking-wider font-medium">Hapus</button>
           </div>
         `;
         itemsContainer.appendChild(row);
@@ -2055,17 +2059,19 @@
 
       checkoutItems.forEach(item => {
         const row = document.createElement('div');
-        row.className = 'py-3 flex items-center justify-between gap-3';
+        row.className = 'py-3 flex items-center justify-between gap-3 border-b hairline last:border-0';
         row.innerHTML = `
           <div class="flex items-center gap-2.5 min-w-0">
-            <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" class="w-10 h-12 sm:w-12 sm:h-14 object-cover bg-zinc-900 shrink-0 border hairline">
+            <div class="w-10 h-12 sm:w-12 sm:h-14 bg-white dark:bg-zinc-900 shrink-0 border hairline p-1.5 flex items-center justify-center rounded-sm">
+              <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" class="w-full h-full object-contain">
+            </div>
             <div class="min-w-0">
-              <h4 class="text-xs font-semibold text-white truncate max-w-[170px] sm:max-w-none">${escapeHTML(item.name)}</h4>
-              <p class="text-[10px] sm:text-[11px] text-zinc-400 font-mono mt-0.5">${formatRupiah(item.price)} &times; ${item.qty}</p>
+              <h4 class="text-xs font-semibold brand-heading truncate max-w-[170px] sm:max-w-none">${escapeHTML(item.name)}</h4>
+              <p class="text-[10px] sm:text-[11px] text-zinc-500 dark:text-zinc-400 font-mono mt-0.5">${formatRupiah(item.price)} &times; ${item.qty}</p>
             </div>
           </div>
           <div class="text-right">
-            <span class="font-mono text-xs font-bold text-white">${formatRupiah(item.price * item.qty)}</span>
+            <span class="font-mono text-xs font-bold brand-heading">${formatRupiah(item.price * item.qty)}</span>
           </div>
         `;
         container.appendChild(row);
