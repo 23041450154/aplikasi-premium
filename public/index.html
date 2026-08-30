@@ -7,6 +7,15 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>FalStore Premium — Akun Aplikasi Premium Resmi</title>
+  <script>
+    (function() {
+      try {
+        const theme = localStorage.getItem('falstore_theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        if (theme === 'light') document.documentElement.classList.add('light');
+        else document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js"></script>
   <script>
@@ -40,27 +49,46 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
+    :root, html.dark {
       color-scheme: dark;
-      --obsidian: #09090b;
-      --ink: #121215;
-      --surface: #18181c;
-      --line: #27272a;
-      --muted: #71717a;
-      --bone: #f4f4f0;
+      --bg-obsidian: #09090b;
+      --bg-ink: #121215;
+      --bg-surface: #18181c;
+      --line: rgba(255, 255, 255, 0.1);
+      --text-primary: #f4f4f0;
+      --text-muted: #71717a;
+      --nav-bg: rgba(9, 9, 11, 0.94);
+      --card-bg: #121215;
+      --input-bg: #09090b;
+      --promo-bg: #121215;
+    }
+
+    html.light {
+      color-scheme: light;
+      --bg-obsidian: #f8fafc;
+      --bg-ink: #ffffff;
+      --bg-surface: #f1f5f9;
+      --line: rgba(0, 0, 0, 0.12);
+      --text-primary: #09090b;
+      --text-muted: #64748b;
+      --nav-bg: rgba(255, 255, 255, 0.94);
+      --card-bg: #ffffff;
+      --input-bg: #f8fafc;
+      --promo-bg: #f1f5f9;
     }
 
     * { box-sizing: border-box; }
-    html { background: #09090b; scroll-behavior: smooth; }
+    html { background: var(--bg-obsidian); scroll-behavior: smooth; transition: background-color 0.25s ease, color 0.25s ease; }
     body {
       margin: 0;
       min-width: 320px;
-      background: #09090b;
-      color: #f4f4f0;
+      background: var(--bg-obsidian);
+      color: var(--text-primary);
       font-family: 'Inter', sans-serif;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       padding-bottom: env(safe-area-inset-bottom, 0px);
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
     button, input, textarea, select { font: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
@@ -70,9 +98,9 @@
     }
     ::selection { background: #ffffff; color: #09090b; }
     .font-editorial { font-family: 'Instrument Serif', serif; }
-    .hairline { border-color: rgba(255, 255, 255, 0.09); }
-    .nav-shell { background: rgba(9, 9, 11, 0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-    .eyebrow { font-size: 10px; line-height: 1; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: #71717a; }
+    .hairline { border-color: var(--line); }
+    .nav-shell { background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .eyebrow { font-size: 10px; line-height: 1; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--text-muted); }
     
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -84,10 +112,27 @@
     @media (hover: hover) {
       .product-card:hover .product-image { transform: scale(1.035); }
     }
-    .cat-pill { border-bottom: 2px solid transparent; color: #71717a; transition: all 0.2s ease; }
-    .cat-pill:hover { color: #f4f4f0; }
-    .cat-pill.is-active { color: #f4f4f0; border-color: #f4f4f0; font-weight: 600; }
+    .cat-pill { border-bottom: 2px solid transparent; color: var(--text-muted); transition: all 0.2s ease; }
+    .cat-pill:hover { color: var(--text-primary); }
+    .cat-pill.is-active { color: var(--text-primary); border-color: var(--text-primary); font-weight: 600; }
     
+    /* Light Mode Class Overrides */
+    html.light .text-white { color: #09090b !important; }
+    html.light .text-zinc-200, html.light .text-zinc-300, html.light .text-zinc-400 { color: #334155 !important; }
+    html.light .text-zinc-500, html.light .text-zinc-600 { color: #64748b !important; }
+    html.light .bg-obsidian { background-color: var(--bg-obsidian) !important; }
+    html.light .bg-ink { background-color: var(--bg-ink) !important; }
+    html.light .bg-surface { background-color: var(--bg-surface) !important; }
+    html.light .bg-zinc-900, html.light .bg-zinc-950 { background-color: #f1f5f9 !important; }
+    html.light .border-zinc-700, html.light .border-zinc-800 { border-color: rgba(0, 0, 0, 0.12) !important; }
+    html.light .hairline { border-color: var(--line) !important; }
+    html.light .nav-shell { background: var(--nav-bg) !important; }
+    html.light .bg-white { background-color: #09090b !important; color: #ffffff !important; }
+    html.light .text-obsidian { color: #ffffff !important; }
+    html.light ::selection { background: #09090b; color: #ffffff; }
+    html.light input, html.light textarea, html.light select { color: #09090b !important; background-color: #ffffff !important; }
+    html.light aside { background-color: var(--promo-bg) !important; color: #475569 !important; }
+
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes scaleUp { from { opacity: 0; transform: scale(0.98) translateY(6px); } to { opacity: 1; transform: scale(1) translateY(0); } }
     @keyframes bounceBadge { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
@@ -108,11 +153,16 @@
       transition: width 0.2s ease, opacity 0.15s ease;
       pointer-events: none;
     }
+    html.light #top-loading-bar { background: #09090b; box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); }
 
     .skeleton { 
       background: linear-gradient(90deg, #121215 25%, #1f1f25 50%, #121215 75%); 
       background-size: 200% 100%; 
       animation: shimmer 1.4s infinite; 
+    }
+    html.light .skeleton {
+      background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%); 
+      background-size: 200% 100%; 
     }
     @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
   </style>
@@ -163,6 +213,12 @@
             </button>
           </div>
         </div>
+
+        <!-- Theme Switcher (Dark / Light Mode) -->
+        <button type="button" onclick="toggleTheme()" class="h-9 sm:h-10 w-9 sm:w-10 border hairline hover:border-zinc-500 inline-flex items-center justify-center transition-colors text-zinc-300" title="Ganti Tema (Dark/Light)">
+          <i data-lucide="sun" id="theme-icon-sun" class="w-4 h-4 text-amber-500 hidden"></i>
+          <i data-lucide="moon" id="theme-icon-moon" class="w-4 h-4"></i>
+        </button>
 
         <!-- Lacak Pesanan (Desktop Icon) -->
         <button type="button" onclick="openTrackModal()" class="hidden sm:inline-flex h-10 px-3.5 border hairline hover:border-zinc-500 text-[10px] uppercase tracking-[0.15em] font-medium items-center gap-2 transition-colors">
@@ -1024,20 +1080,25 @@
 
   <!-- Mobile Bottom Navigation Bar -->
   <nav class="md:hidden fixed bottom-0 inset-x-0 z-40 bg-ink/95 border-t hairline backdrop-blur-xl flex items-center justify-around py-2 text-zinc-400">
-    <button type="button" onclick="switchView('store')" class="flex flex-col items-center gap-1 text-[9px] uppercase tracking-wider py-1 px-3 hover:text-white" id="mob-nav-store">
+    <button type="button" onclick="switchView('store')" class="flex flex-col items-center gap-1 text-[9px] uppercase tracking-wider py-1 px-2.5 hover:text-white" id="mob-nav-store">
       <i data-lucide="sparkles" class="w-4 h-4"></i>
       <span>Aplikasi</span>
     </button>
-    <button type="button" onclick="openTrackModal()" class="flex flex-col items-center gap-1 text-[9px] uppercase tracking-wider py-1 px-3 hover:text-white">
+    <button type="button" onclick="openTrackModal()" class="flex flex-col items-center gap-1 text-[9px] uppercase tracking-wider py-1 px-2.5 hover:text-white">
       <i data-lucide="compass" class="w-4 h-4"></i>
       <span>Lacak</span>
     </button>
-    <button type="button" onclick="switchView('cart')" class="flex flex-col items-center gap-1 text-[9px] uppercase tracking-wider py-1 px-3 hover:text-white relative" id="mob-nav-cart">
+    <button type="button" onclick="toggleTheme()" class="flex flex-col items-center gap-1 text-[9px] uppercase tracking-wider py-1 px-2.5 hover:text-white" id="mob-nav-theme">
+      <i data-lucide="sun" id="mob-theme-icon-sun" class="w-4 h-4 text-amber-500 hidden"></i>
+      <i data-lucide="moon" id="mob-theme-icon-moon" class="w-4 h-4"></i>
+      <span>Tema</span>
+    </button>
+    <button type="button" onclick="switchView('cart')" class="flex flex-col items-center gap-1 text-[9px] uppercase tracking-wider py-1 px-2.5 hover:text-white relative" id="mob-nav-cart">
       <i data-lucide="shopping-cart" class="w-4 h-4"></i>
       <span>Keranjang</span>
-      <span id="mob-cart-badge" class="absolute top-0 right-3 w-3.5 h-3.5 bg-white text-obsidian text-[8px] font-bold rounded-full flex items-center justify-center">0</span>
+      <span id="mob-cart-badge" class="absolute top-0 right-2 w-3.5 h-3.5 bg-white text-obsidian text-[8px] font-bold rounded-full flex items-center justify-center">0</span>
     </button>
-    <button type="button" onclick="switchView('auth')" class="flex flex-col items-center gap-1 text-[9px] uppercase tracking-wider py-1 px-3 hover:text-white" id="mob-nav-auth">
+    <button type="button" onclick="switchView('auth')" class="flex flex-col items-center gap-1 text-[9px] uppercase tracking-wider py-1 px-2.5 hover:text-white" id="mob-nav-auth">
       <i data-lucide="user" class="w-4 h-4"></i>
       <span>Akun</span>
     </button>
@@ -2078,7 +2139,41 @@
       });
     });
 
+    function initTheme() {
+      const savedTheme = localStorage.getItem('falstore_theme') || 'dark';
+      applyTheme(savedTheme);
+    }
+
+    function applyTheme(theme) {
+      const html = document.documentElement;
+      if (theme === 'light') {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        document.getElementById('theme-icon-sun')?.classList.remove('hidden');
+        document.getElementById('theme-icon-moon')?.classList.add('hidden');
+        document.getElementById('mob-theme-icon-sun')?.classList.remove('hidden');
+        document.getElementById('mob-theme-icon-moon')?.classList.add('hidden');
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        document.getElementById('theme-icon-sun')?.classList.add('hidden');
+        document.getElementById('theme-icon-moon')?.classList.remove('hidden');
+        document.getElementById('mob-theme-icon-sun')?.classList.add('hidden');
+        document.getElementById('mob-theme-icon-moon')?.classList.remove('hidden');
+      }
+      localStorage.setItem('falstore_theme', theme);
+      lucide.createIcons();
+    }
+
+    function toggleTheme() {
+      const isLight = document.documentElement.classList.contains('light');
+      const nextTheme = isLight ? 'dark' : 'light';
+      applyTheme(nextTheme);
+      showToast(`Mode ${nextTheme === 'light' ? 'Terang (Light)' : 'Gelap (Dark)'} Aktif`);
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
       lucide.createIcons();
       updateUserAuthState();
       handleInitialRoute();
