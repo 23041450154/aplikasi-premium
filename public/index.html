@@ -382,6 +382,37 @@
     .anim-scale-up { animation: scaleUp 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .badge-bounce { animation: bounceBadge 0.25s ease-in-out; }
 
+    /* Ultra-lightweight Hardware-Accelerated CSS Spinner (Zero Dependencies) */
+    @keyframes appSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .spinner-ring {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: appSpin 0.55s linear infinite;
+      will-change: transform;
+      vertical-align: middle;
+    }
+    .spinner-ring-lg {
+      width: 28px;
+      height: 28px;
+      border-width: 2.5px;
+    }
+    .spinner-ring-blue {
+      border: 2px solid rgba(37, 99, 235, 0.2);
+      border-top-color: #2563eb;
+    }
+    html.light .spinner-ring-dark {
+      border: 2px solid rgba(9, 9, 11, 0.15);
+      border-top-color: #09090b;
+    }
+
     #top-loading-bar {
       position: fixed;
       top: 0;
@@ -394,7 +425,7 @@
       transition: width 0.2s ease, opacity 0.15s ease;
       pointer-events: none;
     }
-    html.light #top-loading-bar { background: #09090b; box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); }
+    html.light #top-loading-bar { background: #2563eb; box-shadow: 0 0 6px rgba(37, 99, 235, 0.5); }
 
     .skeleton { 
       background: linear-gradient(90deg, #121215 25%, #1f1f25 50%, #121215 75%); 
@@ -453,6 +484,12 @@
               <span class="font-medium text-white text-xs max-w-[70px] sm:max-w-[90px] truncate" id="user-display-name">Naufal</span>
             </button>
           </div>
+        </div>
+
+        <!-- Global Async Micro-Spinner Indicator (Ultra-lightweight) -->
+        <div id="global-spinner-indicator" class="opacity-0 scale-75 transition-all duration-200 pointer-events-none flex items-center gap-1.5 px-2 py-1 bg-ink border hairline text-[9px] font-mono text-zinc-400">
+          <span class="spinner-ring w-3 h-3 border-[1.5px] border-zinc-500 border-t-blue-500"></span>
+          <span class="hidden xl:inline text-[8px] uppercase tracking-wider text-zinc-500">Memuat...</span>
         </div>
 
         <!-- Theme Switcher (Dark / Light Mode) -->
@@ -1374,22 +1411,36 @@
 
     const ADMIN_WA_NUMBER = '6285182555842';
 
-    // Loading Bar Controller
+    // Ultra-lightweight Loading Controller
     function startTopLoading() {
       const bar = document.getElementById('top-loading-bar');
-      if (!bar) return;
-      bar.style.opacity = '1';
-      bar.style.width = '60%';
+      if (bar) {
+        bar.style.opacity = '1';
+        bar.style.width = '65%';
+      }
+      const spinner = document.getElementById('global-spinner-indicator');
+      if (spinner) {
+        spinner.classList.remove('opacity-0', 'scale-75', 'pointer-events-none');
+        spinner.classList.add('opacity-100', 'scale-100');
+      }
     }
 
     function finishTopLoading() {
       const bar = document.getElementById('top-loading-bar');
-      if (!bar) return;
-      bar.style.width = '100%';
-      setTimeout(() => {
-        bar.style.opacity = '0';
-        setTimeout(() => { bar.style.width = '0%'; }, 150);
-      }, 100);
+      if (bar) {
+        bar.style.width = '100%';
+        setTimeout(() => {
+          bar.style.opacity = '0';
+          setTimeout(() => { bar.style.width = '0%'; }, 150);
+        }, 120);
+      }
+      const spinner = document.getElementById('global-spinner-indicator');
+      if (spinner) {
+        setTimeout(() => {
+          spinner.classList.remove('opacity-100', 'scale-100');
+          spinner.classList.add('opacity-0', 'scale-75', 'pointer-events-none');
+        }, 150);
+      }
     }
 
     const SAMPLE_REVIEWS = [
@@ -1594,6 +1645,15 @@
 
     // 2. Products Catalog Logic
     async function fetchProducts(silent = false) {
+      const grid = document.getElementById('product-grid');
+      if (!silent && grid && (!products || products.length === 0)) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 flex flex-col items-center justify-center gap-3">
+            <div class="spinner-ring w-7 h-7 border-2 border-zinc-600 border-t-blue-500"></div>
+            <span class="text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-mono">Memuat Aplikasi...</span>
+          </div>
+        `;
+      }
       try {
         if (!silent) startTopLoading();
         let url = `/api/products?category=${encodeURIComponent(currentCategory)}`;
@@ -2119,6 +2179,7 @@
 
     // View Switcher with URL Management
     function switchView(view, pushUrl = true) {
+      startTopLoading();
       ['view-store', 'view-cart', 'view-checkout', 'view-auth', 'view-account', 'view-admin'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.classList.add('hidden');
@@ -2162,6 +2223,7 @@
 
       window.scrollTo({ top: 0, behavior: 'instant' });
       lucide.createIcons();
+      setTimeout(() => finishTopLoading(), 140);
     }
 
     // Admin PIN Gate Logic
