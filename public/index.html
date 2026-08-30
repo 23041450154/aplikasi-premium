@@ -1128,6 +1128,30 @@
     </div>
   </main>
 
+  <!-- MODAL: UNIVERSAL CONFIRMATION DIALOG -->
+  <div id="modal-confirm" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md anim-fade-in" role="dialog" aria-modal="true">
+    <div class="bg-ink border hairline max-w-md w-full p-6 sm:p-7 relative shadow-2xl space-y-5 anim-scale-up rounded-sm">
+      <div class="flex items-start gap-3.5">
+        <div id="confirm-icon-box" class="w-10 h-10 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-500 flex items-center justify-center shrink-0">
+          <i data-lucide="alert-triangle" id="confirm-icon" class="w-5 h-5"></i>
+        </div>
+        <div class="space-y-1 flex-1">
+          <h3 id="confirm-title" class="text-base sm:text-lg font-bold brand-heading leading-tight">Konfirmasi Tindakan</h3>
+          <div id="confirm-message" class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">Apakah Anda yakin ingin melanjutkan?</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 pt-2">
+        <button type="button" id="confirm-btn-cancel" onclick="closeConfirmModal(false)" class="btn-cta-secondary h-11 text-xs uppercase tracking-wider font-bold transition-all">
+          Batal
+        </button>
+        <button type="button" id="confirm-btn-ok" onclick="closeConfirmModal(true)" class="h-11 bg-rose-600 hover:bg-rose-700 text-white text-xs uppercase tracking-wider font-extrabold transition-all shadow-md">
+          Ya, Lanjutkan
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL: PROMO POPUP -->
   <div id="modal-promo" class="fixed inset-0 z-50 overflow-y-auto hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md anim-fade-in" role="dialog" aria-modal="true">
     <div class="bg-ink border hairline max-w-md w-full p-6 sm:p-8 relative anim-scale-up text-center space-y-4 sm:space-y-5">
@@ -1445,6 +1469,60 @@
       }
     }
 
+    // Universal Confirmation Modal Logic
+    let confirmResolver = null;
+
+    function showConfirmModal({
+      title = 'Konfirmasi Tindakan',
+      message = 'Apakah Anda yakin ingin melanjutkan tindakan ini?',
+      confirmText = 'Ya, Lanjutkan',
+      cancelText = 'Batal',
+      type = 'danger', // 'danger' | 'primary' | 'warning'
+      icon = 'alert-triangle'
+    }) {
+      return new Promise((resolve) => {
+        confirmResolver = resolve;
+        const modal = document.getElementById('modal-confirm');
+        const titleEl = document.getElementById('confirm-title');
+        const msgEl = document.getElementById('confirm-message');
+        const btnOk = document.getElementById('confirm-btn-ok');
+        const btnCancel = document.getElementById('confirm-btn-cancel');
+        const iconBox = document.getElementById('confirm-icon-box');
+        const iconEl = document.getElementById('confirm-icon');
+
+        if (titleEl) titleEl.textContent = title;
+        if (msgEl) msgEl.innerHTML = message;
+        if (btnOk) btnOk.textContent = confirmText;
+        if (btnCancel) btnCancel.textContent = cancelText;
+
+        if (btnOk && iconBox) {
+          if (type === 'danger') {
+            iconBox.className = 'w-10 h-10 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-500 flex items-center justify-center shrink-0';
+            btnOk.className = 'h-11 bg-rose-600 hover:bg-rose-700 text-white text-xs uppercase tracking-wider font-extrabold transition-all shadow-md';
+          } else if (type === 'primary') {
+            iconBox.className = 'w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 flex items-center justify-center shrink-0';
+            btnOk.className = 'btn-cta-primary h-11 text-xs uppercase tracking-wider font-extrabold transition-all shadow-md';
+          } else {
+            iconBox.className = 'w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 flex items-center justify-center shrink-0';
+            btnOk.className = 'h-11 bg-amber-600 hover:bg-amber-700 text-white text-xs uppercase tracking-wider font-extrabold transition-all shadow-md';
+          }
+        }
+
+        if (iconEl) iconEl.setAttribute('data-lucide', icon);
+        if (modal) modal.classList.remove('hidden');
+        lucide.createIcons();
+      });
+    }
+
+    function closeConfirmModal(result) {
+      const modal = document.getElementById('modal-confirm');
+      if (modal) modal.classList.add('hidden');
+      if (confirmResolver) {
+        confirmResolver(result);
+        confirmResolver = null;
+      }
+    }
+
     const SAMPLE_REVIEWS = [
       {
         user: "Rizky Ramadhan",
@@ -1533,7 +1611,18 @@
       }
     }
 
-    function logoutUser() {
+    async function logoutUser() {
+      const confirmed = await showConfirmModal({
+        title: 'Keluar dari Akun?',
+        message: 'Apakah Anda yakin ingin keluar dari akun FalStore Anda?',
+        confirmText: 'Ya, Keluar',
+        cancelText: 'Batal',
+        type: 'warning',
+        icon: 'log-out'
+      });
+
+      if (!confirmed) return;
+
       currentUser = null;
       localStorage.removeItem('falstore_prem_user');
       updateUserAuthState();
@@ -1894,7 +1983,21 @@
       updateCartState();
     }
 
-    function removeFromCart(productId) {
+    async function removeFromCart(productId) {
+      const item = cart.find(i => i.id === productId);
+      const name = item ? item.name : 'produk ini';
+
+      const confirmed = await showConfirmModal({
+        title: 'Hapus dari Keranjang?',
+        message: `Apakah Anda yakin ingin menghapus aplikasi <b>"${escapeHTML(name)}"</b> dari keranjang langganan?`,
+        confirmText: 'Ya, Hapus',
+        cancelText: 'Batal',
+        type: 'danger',
+        icon: 'trash-2'
+      });
+
+      if (!confirmed) return;
+
       cart = cart.filter(i => i.id !== productId);
       localStorage.setItem('falstore_prem_cart', JSON.stringify(cart));
       updateCartState();
@@ -1915,12 +2018,23 @@
       updateCartState();
     }
 
-    function clearCartItems() {
-      if (confirm('Yakin ingin mengosongkan seluruh isi keranjang?')) {
-        cart = [];
-        localStorage.removeItem('falstore_prem_cart');
-        updateCartState();
-      }
+    async function clearCartItems() {
+      if (cart.length === 0) return;
+      const confirmed = await showConfirmModal({
+        title: 'Kosongkan Keranjang?',
+        message: 'Apakah Anda yakin ingin menghapus <b>semua item</b> dari keranjang langganan?',
+        confirmText: 'Ya, Kosongkan',
+        cancelText: 'Batal',
+        type: 'danger',
+        icon: 'trash-2'
+      });
+
+      if (!confirmed) return;
+
+      cart = [];
+      localStorage.removeItem('falstore_prem_cart');
+      updateCartState();
+      showToast('Keranjang telah dikosongkan');
     }
 
     function updateCartState() {
@@ -2134,12 +2248,40 @@
 
       if (!name || !phone || !email) return alert('Mohon lengkapi nama, nomor WhatsApp, dan email Anda.');
 
+      const subtotal = checkoutItems.reduce((acc, i) => acc + (i.price * i.qty), 0);
+      const grandTotal = subtotal - (subtotal * discountPercent);
+
+      const confirmed = await showConfirmModal({
+        title: 'Konfirmasi Data & Pesanan',
+        message: `
+          <div class="space-y-2 mt-1 text-xs sm:text-sm text-left">
+            <p class="text-zinc-600 dark:text-zinc-400">Pastikan data tujuan pengiriman akun sudah tepat:</p>
+            <div class="p-3 bg-surface border hairline space-y-1 font-mono text-[11px] sm:text-xs">
+              <div><span class="text-zinc-500">Nama:</span> <b class="brand-heading">${escapeHTML(name)}</b></div>
+              <div><span class="text-zinc-500">WhatsApp:</span> <b class="brand-heading">${escapeHTML(phone)}</b></div>
+              <div><span class="text-zinc-500">Email:</span> <b class="brand-heading">${escapeHTML(email)}</b></div>
+              <div class="pt-1.5 border-t hairline flex justify-between">
+                <span class="text-zinc-500">Total Tagihan:</span>
+                <b class="text-blue-600 dark:text-white font-bold">${formatRupiah(grandTotal)}</b>
+              </div>
+            </div>
+            <p class="text-[11px] text-zinc-500">Kredensial dan petunjuk aktivasi akan dikirimkan otomatis setelah pembayaran QRIS.</p>
+          </div>
+        `,
+        confirmText: 'Ya, Lanjutkan Pembayaran',
+        cancelText: 'Periksa Lagi',
+        type: 'primary',
+        icon: 'shield-check'
+      });
+
+      if (!confirmed) return;
+
       const submitBtn = document.getElementById('btn-submit-order');
       const submitText = document.getElementById('submit-order-text');
       
       submitBtn.disabled = true;
       submitBtn.classList.add('opacity-70', 'cursor-wait');
-      submitText.textContent = 'Memproses Aktivasi...';
+      submitText.innerHTML = '<span class="spinner-ring w-3.5 h-3.5 border-2 border-white/30 border-t-white inline-block mr-2"></span> Memproses Aktivasi...';
       startTopLoading();
 
       try {
@@ -2359,6 +2501,17 @@
     }
 
     async function updateOrderStatus(id, status) {
+      const confirmed = await showConfirmModal({
+        title: 'Perbarui Status Transaksi?',
+        message: `Ubah status transaksi <b>${escapeHTML(id)}</b> menjadi <b>"${escapeHTML(status)}"</b>?`,
+        confirmText: 'Ya, Ubah Status',
+        cancelText: 'Batal',
+        type: 'primary',
+        icon: 'check-circle'
+      });
+
+      if (!confirmed) return;
+
       try {
         const res = await fetch(`/api/orders/${encodeURIComponent(id)}/status`, {
           method: 'PATCH',
