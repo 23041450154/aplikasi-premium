@@ -19,8 +19,23 @@ const pool = new Pool({
   port: process.env.DB_PORT || 5432,
 });
 
-// Default Digital Products Dataset
+// Default Digital Products Dataset (Zoom #1, Canva #2, followed by ChatGPT, YT, Netflix, Spotify, CapCut, Claude, MS365)
 const INITIAL_DIGITAL_PRODUCTS = [
+  {
+    id: 'PROD-ZOOM-PRO',
+    name: 'Zoom Pro 1 Bulan (Meeting 30 Jam / 100-300 Peserta)',
+    category: 'produktivitas',
+    price: 30000,
+    original_price: 220000,
+    image: 'https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=800&auto=format&fit=crop&q=85',
+    logo_brand: 'zoom',
+    badge: 'Terlaris #1',
+    description: 'Lisensi resmi Zoom Pro untuk meeting tanpa batas waktu (hingga 30 jam terus-menerus), kapasitas 100-300 peserta, cloud recording 5GB, custom meeting ID, fitur co-host & breakout rooms, serta streaming ke YouTube/Facebook Live.',
+    stock: 150,
+    rating: 5.0,
+    sold: 980,
+    sort_order: 1
+  },
   {
     id: 'PROD-CANVA-1Y',
     name: 'Canva Pro 1 Tahun (Invite Email Pribadi)',
@@ -28,11 +43,13 @@ const INITIAL_DIGITAL_PRODUCTS = [
     price: 25000,
     original_price: 120000,
     image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop&q=85',
-    badge: 'Terlaris',
+    logo_brand: 'canva',
+    badge: 'Favorit Desain',
     description: 'Langganan Canva Pro 1 Tahun full garansi. Menggunakan email pribadi Anda sendiri tanpa ganti akun. Akses jutaan template premium, Brand Kit, Magic Studio AI, resize instan, dan storage cloud 1TB.',
-    stock: 100,
+    stock: 120,
     rating: 5.0,
-    sold: 480
+    sold: 890,
+    sort_order: 2
   },
   {
     id: 'PROD-CHATGPT-PLUS',
@@ -41,11 +58,13 @@ const INITIAL_DIGITAL_PRODUCTS = [
     price: 65000,
     original_price: 330000,
     image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?w=800&auto=format&fit=crop&q=85',
-    badge: 'AI Pilihan',
+    logo_brand: 'chatgpt',
+    badge: 'AI Populer',
     description: 'Akses resmi ChatGPT Plus (GPT-4o, GPT-4 Turbo, DALL-E 3 image generator, Advanced Data Analysis, Custom GPTs). Kredensial akun private login resmi langsung tanpa antre.',
-    stock: 50,
+    stock: 60,
     rating: 4.9,
-    sold: 350
+    sold: 720,
+    sort_order: 3
   },
   {
     id: 'PROD-YT-PREMIUM',
@@ -54,11 +73,13 @@ const INITIAL_DIGITAL_PRODUCTS = [
     price: 20000,
     original_price: 90000,
     image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&auto=format&fit=crop&q=85',
+    logo_brand: 'youtube',
     badge: 'Bebas Iklan',
     description: 'Nonton video tanpa gangguan iklan di semua perangkat (HP, Smart TV, Laptop), background play saat layar mati, serta akses penuh YouTube Music Premium kualitas audio tinggi.',
-    stock: 120,
+    stock: 100,
     rating: 5.0,
-    sold: 620
+    sold: 680,
+    sort_order: 4
   },
   {
     id: 'PROD-NETFLIX-4K',
@@ -67,11 +88,13 @@ const INITIAL_DIGITAL_PRODUCTS = [
     price: 35000,
     original_price: 186000,
     image: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&auto=format&fit=crop&q=85',
+    logo_brand: 'netflix',
     badge: '4K Ultra HD',
     description: '1 Profil Khusus dengan PIN Pengaman Pribadi. Bebas ganti nama profil & avatar. Resolusi Ultra HD 4K + Dolby Atmos, anti screen-limit dan anti-on hold.',
-    stock: 45,
+    stock: 50,
     rating: 4.9,
-    sold: 510
+    sold: 550,
+    sort_order: 5
   },
   {
     id: 'PROD-SPOTIFY-IND',
@@ -80,11 +103,13 @@ const INITIAL_DIGITAL_PRODUCTS = [
     price: 28000,
     original_price: 165000,
     image: 'https://images.unsplash.com/photo-1614680376593-902f749f7ffc?w=800&auto=format&fit=crop&q=85',
+    logo_brand: 'spotify',
     badge: 'Audio Hi-Fi',
     description: 'Dengarkan jutaan lagu tanpa jeda iklan, skip lagu tak terbatas, download lagu offline kualitas 320kbps. Bisa perpanjang di akun Spotify lama Anda.',
-    stock: 75,
+    stock: 80,
     rating: 4.9,
-    sold: 390
+    sold: 430,
+    sort_order: 6
   },
   {
     id: 'PROD-CAPCUT-PRO',
@@ -93,11 +118,13 @@ const INITIAL_DIGITAL_PRODUCTS = [
     price: 39000,
     original_price: 150000,
     image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop&q=85',
+    logo_brand: 'capcut',
     badge: 'Editor Pilihan',
     description: 'Buka semua fitur pro editing video di PC Windows/Mac dan Android/iOS. Termasuk auto-caption AI, removal background 1-klik, efek premium, dan 100GB Cloud Storage.',
-    stock: 60,
+    stock: 70,
     rating: 4.9,
-    sold: 275
+    sold: 310,
+    sort_order: 7
   },
   {
     id: 'PROD-CLAUDE-PRO',
@@ -106,11 +133,13 @@ const INITIAL_DIGITAL_PRODUCTS = [
     price: 75000,
     original_price: 350000,
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=85',
+    logo_brand: 'claude',
     badge: 'Coding & Brain',
     description: 'Akses batas pesan 5x lebih banyak ke model tercanggih Claude 3.5 Sonnet dan Claude Opus. Sangat unggul untuk coding, analisis dokumen PDF panjang, dan penulisan riset mendalam.',
-    stock: 30,
+    stock: 40,
     rating: 5.0,
-    sold: 190
+    sold: 260,
+    sort_order: 8
   },
   {
     id: 'PROD-MS365-1TB',
@@ -119,11 +148,13 @@ const INITIAL_DIGITAL_PRODUCTS = [
     price: 45000,
     original_price: 280000,
     image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop&q=85',
+    logo_brand: 'ms365',
     badge: 'Office Resmi',
     description: 'Aplikasi Word, Excel, PowerPoint, Outlook versi desktop terbaru untuk 5 perangkat (PC/Mac/HP). Termasuk 1000GB (1TB) OneDrive Cloud Storage pribadi.',
-    stock: 40,
+    stock: 45,
     rating: 4.9,
-    sold: 210
+    sold: 230,
+    sort_order: 9
   }
 ];
 
@@ -150,11 +181,13 @@ async function initDB() {
         price NUMERIC(12, 2) NOT NULL,
         original_price NUMERIC(12, 2),
         image TEXT NOT NULL,
+        logo_brand VARCHAR(50),
         badge VARCHAR(100),
         description TEXT,
         stock INT DEFAULT 50,
         rating NUMERIC(3, 2) DEFAULT 4.9,
         sold INT DEFAULT 120,
+        sort_order INT DEFAULT 0,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
 
@@ -174,20 +207,33 @@ async function initDB() {
       );
     `);
 
-    // Seed initial products if table is empty
-    const checkProds = await pool.query('SELECT COUNT(*) FROM digital_products');
-    if (parseInt(checkProds.rows[0].count, 10) === 0) {
-      for (const p of INITIAL_DIGITAL_PRODUCTS) {
-        await pool.query(
-          `INSERT INTO digital_products (id, name, category, price, original_price, image, badge, description, stock, rating, sold)
-           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) ON CONFLICT (id) DO NOTHING`,
-          [p.id, p.name, p.category, p.price, p.original_price, p.image, p.badge, p.description, p.stock, p.rating, p.sold]
-        );
-      }
-      console.log('[DB] Seeded initial digital products into PostgreSQL.');
+    // Ensure sort_order & logo_brand columns exist
+    await pool.query(`
+      ALTER TABLE digital_products ADD COLUMN IF NOT EXISTS sort_order INT DEFAULT 0;
+      ALTER TABLE digital_products ADD COLUMN IF NOT EXISTS logo_brand VARCHAR(50);
+    `);
+
+    // Sync all products with proper sorting
+    for (const p of INITIAL_DIGITAL_PRODUCTS) {
+      await pool.query(
+        `INSERT INTO digital_products (id, name, category, price, original_price, image, logo_brand, badge, description, stock, rating, sold, sort_order)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+         ON CONFLICT (id) DO UPDATE SET
+           name = EXCLUDED.name,
+           category = EXCLUDED.category,
+           price = EXCLUDED.price,
+           original_price = EXCLUDED.original_price,
+           image = EXCLUDED.image,
+           logo_brand = EXCLUDED.logo_brand,
+           badge = EXCLUDED.badge,
+           description = EXCLUDED.description,
+           sort_order = EXCLUDED.sort_order,
+           sold = EXCLUDED.sold;`,
+        [p.id, p.name, p.category, p.price, p.original_price, p.image, p.logo_brand || 'brand', p.badge, p.description, p.stock, p.rating, p.sold, p.sort_order || 0]
+      );
     }
 
-    console.log('[DB] PostgreSQL Digital Store Tables Initialized.');
+    console.log('[DB] PostgreSQL Digital Products Initialized & Sorted (Zoom #1, Canva #2).');
   } catch (err) {
     console.error('[DB] Init error (using memory fallback if needed):', err.message);
   }
@@ -273,7 +319,7 @@ app.get('/api/products', async (req, res) => {
       query += ` AND (name ILIKE $${params.length} OR description ILIKE $${params.length})`;
     }
 
-    query += ' ORDER BY sold DESC, created_at DESC';
+    query += ' ORDER BY sort_order ASC, sold DESC, created_at DESC';
     const result = await pool.query(query, params);
     res.json({ success: true, products: result.rows.length > 0 ? result.rows : INITIAL_DIGITAL_PRODUCTS });
   } catch (err) {
@@ -283,12 +329,12 @@ app.get('/api/products', async (req, res) => {
 
 app.post('/api/products', async (req, res) => {
   try {
-    const { name, category, price, image, badge, desc, stock } = req.body;
+    const { name, category, price, image, badge, desc, stock, logo_brand } = req.body;
     const id = 'PROD-' + Date.now().toString().slice(-6);
     const result = await pool.query(
-      `INSERT INTO digital_products (id, name, category, price, original_price, image, badge, description, stock)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
-      [id, name, category, price, price * 1.5, image, badge || 'Digital', desc || '', stock || 50]
+      `INSERT INTO digital_products (id, name, category, price, original_price, image, logo_brand, badge, description, stock, sort_order)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 99) RETURNING *`,
+      [id, name, category, price, price * 1.5, image, logo_brand || 'brand', badge || 'Digital', desc || '', stock || 50]
     );
     res.status(201).json({ success: true, product: result.rows[0] });
   } catch (err) {
@@ -323,7 +369,7 @@ app.post('/api/orders', async (req, res) => {
 
     const subtotal = items.reduce((acc, item) => acc + (Number(item.price) * item.qty), 0);
     const discount = (discount_code === 'PREMIUM50') ? subtotal * 0.5 : 0;
-    const total_amount = subtotal - discount; // Digital products have Rp 0 shipping fee
+    const total_amount = subtotal - discount;
 
     const result = await pool.query(
       `INSERT INTO digital_orders (id, customer_name, customer_phone, customer_email, delivery_method, payment_method, total_amount, discount_code, items, notes)

@@ -1324,19 +1324,56 @@
         return;
       }
 
+      function getBrandIconHTML(brand, name) {
+        const b = (brand || '').toLowerCase();
+        const n = (name || '').toLowerCase();
+        if (b === 'zoom' || n.includes('zoom')) {
+          return `<div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#0B5CFF] text-white flex items-center justify-center font-bold shadow-lg shrink-0"><i data-lucide="video" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i></div>`;
+        }
+        if (b === 'canva' || n.includes('canva')) {
+          return `<div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-[#00C4CC] to-[#7D2AE8] text-white flex items-center justify-center font-bold text-xs font-serif shadow-lg shrink-0">C</div>`;
+        }
+        if (b === 'chatgpt' || n.includes('chatgpt')) {
+          return `<div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#10A37F] text-white flex items-center justify-center font-bold shadow-lg shrink-0"><i data-lucide="bot" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i></div>`;
+        }
+        if (b === 'youtube' || n.includes('youtube')) {
+          return `<div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#FF0000] text-white flex items-center justify-center font-bold shadow-lg shrink-0"><i data-lucide="play" class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white"></i></div>`;
+        }
+        if (b === 'netflix' || n.includes('netflix')) {
+          return `<div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#E50914] text-white flex items-center justify-center font-bold text-xs font-mono shadow-lg shrink-0">N</div>`;
+        }
+        if (b === 'spotify' || n.includes('spotify')) {
+          return `<div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#1DB954] text-white flex items-center justify-center font-bold shadow-lg shrink-0"><i data-lucide="music" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i></div>`;
+        }
+        if (b === 'capcut' || n.includes('capcut')) {
+          return `<div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-zinc-900 border border-zinc-600 text-white flex items-center justify-center font-bold shadow-lg shrink-0"><i data-lucide="scissors" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i></div>`;
+        }
+        if (b === 'claude' || n.includes('claude')) {
+          return `<div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-amber-600 text-white flex items-center justify-center font-bold text-xs font-mono shadow-lg shrink-0">C3</div>`;
+        }
+        return `<div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#0078D4] text-white flex items-center justify-center font-bold shadow-lg shrink-0"><i data-lucide="layout-grid" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i></div>`;
+      }
+
       products.forEach((p, idx) => {
         const card = document.createElement('article');
         card.className = 'product-card group flex flex-col justify-between anim-fade-in';
         card.onclick = () => openProductDetail(p.id);
 
         const numStr = String(idx + 1).padStart(2, '0');
+        const brandIcon = getBrandIconHTML(p.logo_brand, p.name);
+
         card.innerHTML = `
           <div>
             <div class="relative overflow-hidden aspect-[4/5] bg-zinc-900 mb-2.5 sm:mb-3 border hairline">
-              <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" class="product-image w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=85'">
-              <span class="absolute left-2 top-2 sm:left-2.5 sm:top-2.5 bg-obsidian/90 px-1.5 py-0.5 sm:px-2 text-[7.5px] sm:text-[8px] uppercase tracking-widest font-semibold text-white border hairline">
-                ${escapeHTML(p.badge || 'Digital')}
-              </span>
+              <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" class="product-image w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&auto=format&fit=crop&q=85'">
+              
+              <div class="absolute top-2.5 inset-x-2.5 flex items-center justify-between pointer-events-none">
+                <span class="bg-obsidian/90 px-1.5 py-0.5 sm:px-2 text-[7.5px] sm:text-[8px] uppercase tracking-widest font-semibold text-white border hairline">
+                  ${escapeHTML(p.badge || 'Digital')}
+                </span>
+                ${brandIcon}
+              </div>
+
               <div class="absolute inset-x-2 bottom-2 hidden sm:flex opacity-0 group-hover:opacity-100 transition-opacity gap-2">
                 <button type="button" onclick="event.stopPropagation(); openProductDetail('${escapeHTML(p.id)}')" class="flex-1 h-8 bg-obsidian/95 text-white text-[9px] uppercase tracking-wider font-bold border hairline">Lihat Detail</button>
                 <button type="button" onclick="event.stopPropagation(); addToCart('${escapeHTML(p.id)}')" class="h-8 px-2.5 bg-white text-obsidian text-xs font-bold" title="Tambah"><i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i></button>
