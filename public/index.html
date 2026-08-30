@@ -700,7 +700,7 @@
           </div>
 
           <button type="button" onclick="proceedToShopeeCheckout()" id="btn-cart-checkout" class="btn-cta-primary h-12 sm:h-14 px-7 sm:px-10 text-xs sm:text-sm uppercase tracking-[0.16em] font-extrabold flex items-center justify-center gap-2 transition-all shadow-lg shrink-0">
-            <span>Aktivasi Sekarang</span>
+            <span>Bayar Sekarang</span>
             <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           </button>
         </div>
@@ -859,9 +859,9 @@
             </div>
           </div>
 
-          <button type="button" onclick="submitShopeeCheckout()" id="btn-submit-order" class="btn-cta-primary w-full h-12 text-[10px] uppercase tracking-[0.18em] font-extrabold flex items-center justify-center gap-2 transition-all">
-            <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-            <span id="submit-order-text">Bayar & Aktivasi Sekarang</span>
+          <button type="button" onclick="submitShopeeCheckout()" id="btn-submit-order" class="btn-cta-primary w-full h-12 sm:h-14 text-xs sm:text-sm uppercase tracking-[0.18em] font-extrabold flex items-center justify-center gap-2 transition-all">
+            <i data-lucide="lock" class="w-4 h-4"></i>
+            <span id="submit-order-text">Bayar Sekarang</span>
           </button>
         </div>
       </div>
@@ -2318,7 +2318,7 @@
       } finally {
         submitBtn.disabled = false;
         submitBtn.classList.remove('opacity-70', 'cursor-wait');
-        submitText.textContent = 'Bayar & Aktivasi Sekarang';
+        submitText.textContent = 'Bayar Sekarang';
         finishTopLoading();
       }
     }
