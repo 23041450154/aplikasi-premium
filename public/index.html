@@ -117,6 +117,46 @@
     .cat-pill.is-active { color: var(--text-primary); border-color: var(--text-primary); font-weight: 600; }
     
     /* Strict Contrast Elements for Product Cards */
+    .brand-logo-title,
+    .brand-heading {
+      color: #ffffff;
+    }
+    html.light .brand-logo-title,
+    html.light .brand-heading {
+      color: #09090b !important;
+    }
+
+    .auth-provider-btn {
+      background-color: #121215;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    .auth-provider-btn:hover {
+      background-color: #18181c;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .auth-provider-title {
+      color: #ffffff;
+    }
+    .auth-provider-desc {
+      color: #a1a1aa;
+    }
+
+    html.light .auth-provider-btn {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    }
+    html.light .auth-provider-btn:hover {
+      background-color: #f8fafc !important;
+      border-color: #09090b !important;
+    }
+    html.light .auth-provider-title {
+      color: #09090b !important;
+    }
+    html.light .auth-provider-desc {
+      color: #64748b !important;
+    }
+
     .card-badge-tag {
       background-color: #09090b !important;
       color: #ffffff !important;
@@ -264,13 +304,13 @@
       
       <!-- Brand Logo -->
       <div class="flex items-center gap-6 sm:gap-8">
-        <button type="button" onclick="switchView('store')" class="group flex items-baseline gap-1.5 text-white focus:outline-none text-left">
-          <span class="text-lg sm:text-xl font-extrabold tracking-tight">FalStore</span>
-          <span class="font-editorial italic text-zinc-500 text-base sm:text-lg group-hover:text-white transition-colors">premium</span>
+        <button type="button" onclick="switchView('store')" class="group flex items-baseline gap-1.5 focus:outline-none text-left">
+          <span class="text-lg sm:text-xl font-extrabold tracking-tight brand-logo-title">FalStore</span>
+          <span class="font-editorial italic text-zinc-500 text-base sm:text-lg group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">premium</span>
         </button>
         <nav class="hidden md:flex items-center gap-6 text-[10px] uppercase tracking-[0.18em] text-zinc-400" aria-label="Navigasi Utama">
-          <button type="button" onclick="switchView('store')" class="hover:text-white transition-colors">Aplikasi</button>
-          <a href="#keunggulan" class="hover:text-white transition-colors">Garansi & SLA</a>
+          <button type="button" onclick="switchView('store')" class="hover:text-zinc-900 dark:hover:text-white transition-colors">Aplikasi</button>
+          <a href="#keunggulan" class="hover:text-zinc-900 dark:hover:text-white transition-colors">Garansi & SLA</a>
         </nav>
       </div>
 
@@ -347,7 +387,7 @@
             </figure>
             <div class="col-span-3 pb-1 sm:pb-2">
               <div class="border-t hairline pt-2 sm:pt-3">
-                <span class="block font-editorial italic text-2xl sm:text-4xl text-zinc-200">08+</span>
+                <span class="block font-editorial italic text-2xl sm:text-4xl text-zinc-900 dark:text-zinc-200">08+</span>
                 <span class="block mt-0.5 text-[8px] sm:text-[9px] uppercase tracking-wider text-zinc-500">Aplikasi Pilihan</span>
               </div>
               <div class="mt-4 sm:mt-8 aspect-[3/4] overflow-hidden bg-zinc-900 border hairline">
@@ -359,11 +399,11 @@
       </div>
 
       <!-- Trust Bar -->
-      <div class="mt-8 sm:mt-12 border-y hairline py-3 sm:py-4 flex items-center justify-between gap-4 sm:gap-6 overflow-x-auto no-scrollbar text-[8px] sm:text-[9px] uppercase tracking-[0.16em] text-zinc-400 whitespace-nowrap">
-        <span class="text-white font-semibold">⚡ Pengiriman Instan 0-5 Menit</span><span class="text-zinc-700">/</span>
-        <span>🛡️ Full Garansi Sesuai Durasi</span><span class="text-zinc-700">/</span>
-        <span>💳 Pembayaran QRIS Otomatis</span><span class="text-zinc-700">/</span>
-        <span>💬 CS WhatsApp 24/7 Standby</span>
+      <div class="mt-8 sm:mt-12 border-y hairline py-3 sm:py-4 flex items-center justify-between gap-4 sm:gap-6 overflow-x-auto no-scrollbar text-[8px] sm:text-[9px] uppercase tracking-[0.16em] text-zinc-600 dark:text-zinc-400 whitespace-nowrap">
+        <span class="text-zinc-900 dark:text-white font-semibold">⚡ Pengiriman Instan 0-5 Menit</span><span class="text-zinc-400 dark:text-zinc-700">/</span>
+        <span class="text-zinc-700 dark:text-zinc-300">🛡️ Full Garansi Sesuai Durasi</span><span class="text-zinc-400 dark:text-zinc-700">/</span>
+        <span class="text-zinc-700 dark:text-zinc-300">💳 Pembayaran QRIS Otomatis</span><span class="text-zinc-400 dark:text-zinc-700">/</span>
+        <span class="text-zinc-700 dark:text-zinc-300">💬 CS WhatsApp 24/7 Standby</span>
       </div>
     </section>
 
@@ -677,32 +717,32 @@
       <span class="text-zinc-300 font-semibold">Pilih Metode Masuk</span>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 border hairline bg-ink overflow-hidden">
-      <div class="lg:col-span-5 p-6 sm:p-12 bg-obsidian flex flex-col justify-between border-b lg:border-b-0 lg:border-r hairline relative">
+    <div class="grid grid-cols-1 lg:grid-cols-12 border hairline bg-ink overflow-hidden shadow-sm">
+      <div class="lg:col-span-5 p-6 sm:p-12 bg-surface flex flex-col justify-between border-b lg:border-b-0 lg:border-r hairline relative">
         <div class="space-y-4 sm:space-y-6">
           <div class="flex items-baseline gap-2">
-            <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">FalStore</span>
+            <span class="text-xl sm:text-2xl font-extrabold tracking-tight brand-logo-title">FalStore</span>
             <span class="font-editorial italic text-zinc-500 text-lg sm:text-xl">premium</span>
           </div>
 
           <div class="space-y-1 sm:space-y-2">
-            <span class="eyebrow text-emerald-400">Autentikasi 1-Klik</span>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white leading-tight">
-              Akses instan,<br><span class="font-editorial italic font-normal text-zinc-300">langsung aktif.</span>
+            <span class="eyebrow text-emerald-500 font-bold">Autentikasi 1-Klik</span>
+            <h2 class="text-2xl sm:text-3xl font-bold brand-heading leading-tight">
+              Akses instan,<br><span class="font-editorial italic font-normal text-zinc-500 dark:text-zinc-300">langsung aktif.</span>
             </h2>
           </div>
 
-          <p class="text-xs text-zinc-400 leading-relaxed">
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
             Tidak perlu mengetik formulir panjang atau mengingat password. Pilih akun favorit Anda untuk langsung masuk dan mengelola langganan aplikasi.
           </p>
 
           <div class="pt-2 sm:pt-4 space-y-2.5 sm:space-y-3">
-            <div class="flex items-start gap-2.5 text-xs text-zinc-300">
-              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+            <div class="flex items-start gap-2.5 text-xs text-zinc-700 dark:text-zinc-300">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
               <span>Otentikasi aman tanpa pembagian data privat</span>
             </div>
-            <div class="flex items-start gap-2.5 text-xs text-zinc-300">
-              <i data-lucide="package-check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+            <div class="flex items-start gap-2.5 text-xs text-zinc-700 dark:text-zinc-300">
+              <i data-lucide="package-check" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
               <span>Sinkronisasi otomatis riwayat kredensial akun</span>
             </div>
           </div>
@@ -713,18 +753,18 @@
         </div>
       </div>
 
-      <div class="lg:col-span-7 p-6 sm:p-12 flex flex-col justify-center space-y-5 sm:space-y-6">
+      <div class="lg:col-span-7 p-6 sm:p-12 bg-ink flex flex-col justify-center space-y-5 sm:space-y-6">
         <div>
           <span class="eyebrow">Pintu Masuk Member</span>
-          <h3 class="text-xl sm:text-2xl font-bold text-white mt-1">Pilih Akun Anda</h3>
-          <p class="text-xs text-zinc-400 mt-0.5">Klik salah satu akun di bawah untuk masuk secara instan tanpa mengetik.</p>
+          <h3 class="text-xl sm:text-2xl font-bold brand-heading mt-1">Pilih Akun Anda</h3>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Klik salah satu akun di bawah untuk masuk secara instan tanpa mengetik.</p>
         </div>
 
         <div class="space-y-3 pt-1">
           <!-- 1. GOOGLE LOGIN -->
-          <button type="button" onclick="loginWithProvider('google')" class="w-full p-4 sm:p-5 bg-obsidian hover:bg-zinc-900 border hairline hover:border-white transition-all group flex items-center justify-between text-left">
+          <button type="button" onclick="loginWithProvider('google')" class="auth-provider-btn w-full p-4 sm:p-5 border hairline transition-all group flex items-center justify-between text-left">
             <div class="flex items-center gap-3.5 sm:gap-4">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shrink-0 shadow-md">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-zinc-100">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                   <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -733,43 +773,43 @@
                 </svg>
               </div>
               <div>
-                <div class="text-xs sm:text-sm font-bold text-white group-hover:text-white transition-colors">Lanjutkan dengan Google</div>
-                <div class="text-[10px] sm:text-[11px] text-zinc-400 font-mono mt-0.5">Otentikasi Akun Google &bull; 1-Klik</div>
+                <div class="text-xs sm:text-sm font-bold auth-provider-title transition-colors">Lanjutkan dengan Google</div>
+                <div class="text-[10px] sm:text-[11px] auth-provider-desc font-mono mt-0.5">Otentikasi Akun Google &bull; 1-Klik</div>
               </div>
             </div>
-            <i data-lucide="arrow-right" class="w-4 h-4 text-zinc-500 group-hover:text-white transition-all"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-all"></i>
           </button>
 
           <!-- 2. WHATSAPP LOGIN -->
-          <button type="button" onclick="loginWithProvider('whatsapp')" class="w-full p-4 sm:p-5 bg-obsidian hover:bg-zinc-900 border hairline hover:border-emerald-500 transition-all group flex items-center justify-between text-left">
+          <button type="button" onclick="loginWithProvider('whatsapp')" class="auth-provider-btn w-full p-4 sm:p-5 border hairline hover:border-emerald-500 dark:hover:border-emerald-500 transition-all group flex items-center justify-between text-left">
             <div class="flex items-center gap-3.5 sm:gap-4">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#25D366] flex items-center justify-center shrink-0 shadow-md">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#25D366] flex items-center justify-center shrink-0 shadow-sm">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-white" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                 </svg>
               </div>
               <div>
-                <div class="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors">Lanjutkan dengan WhatsApp</div>
-                <div class="text-[10px] sm:text-[11px] text-zinc-400 font-mono mt-0.5">Direct Handshake &bull; 085182555842</div>
+                <div class="text-sm font-bold auth-provider-title transition-colors">Lanjutkan dengan WhatsApp</div>
+                <div class="text-[10px] sm:text-[11px] auth-provider-desc font-mono mt-0.5">Direct Handshake &bull; 085182555842</div>
               </div>
             </div>
-            <i data-lucide="arrow-right" class="w-4 h-4 text-zinc-500 group-hover:text-emerald-400 transition-all"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-zinc-400 group-hover:text-emerald-500 transition-all"></i>
           </button>
 
           <!-- 3. TELEGRAM LOGIN -->
-          <button type="button" onclick="loginWithProvider('telegram')" class="w-full p-4 sm:p-5 bg-obsidian hover:bg-zinc-900 border hairline hover:border-sky-400 transition-all group flex items-center justify-between text-left">
+          <button type="button" onclick="loginWithProvider('telegram')" class="auth-provider-btn w-full p-4 sm:p-5 border hairline hover:border-sky-400 dark:hover:border-sky-400 transition-all group flex items-center justify-between text-left">
             <div class="flex items-center gap-3.5 sm:gap-4">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#24A1DE] flex items-center justify-center shrink-0 shadow-md">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#24A1DE] flex items-center justify-center shrink-0 shadow-sm">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-white" viewBox="0 0 24 24">
                   <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.989z"/>
                 </svg>
               </div>
               <div>
-                <div class="text-sm font-bold text-white group-hover:text-sky-400 transition-colors">Lanjutkan dengan Telegram</div>
-                <div class="text-[10px] sm:text-[11px] text-zinc-400 font-mono mt-0.5">Otentikasi Instan Bot Telegram</div>
+                <div class="text-sm font-bold auth-provider-title transition-colors">Lanjutkan dengan Telegram</div>
+                <div class="text-[10px] sm:text-[11px] auth-provider-desc font-mono mt-0.5">Otentikasi Instan Bot Telegram</div>
               </div>
             </div>
-            <i data-lucide="arrow-right" class="w-4 h-4 text-zinc-500 group-hover:text-sky-400 transition-all"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-zinc-400 group-hover:text-sky-400 transition-all"></i>
           </button>
         </div>
       </div>
