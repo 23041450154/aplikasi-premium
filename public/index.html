@@ -523,10 +523,10 @@
 
       <!-- Trust Bar -->
       <div class="mt-8 sm:mt-12 border-y hairline py-3 sm:py-4 flex items-center justify-between gap-4 sm:gap-6 overflow-x-auto no-scrollbar text-[8px] sm:text-[9px] uppercase tracking-[0.16em] text-zinc-600 dark:text-zinc-400 whitespace-nowrap">
-        <span class="text-zinc-900 dark:text-white font-semibold">⚡ Pengiriman Instan 0-5 Menit</span><span class="text-zinc-400 dark:text-zinc-700">/</span>
-        <span class="text-zinc-700 dark:text-zinc-300">🛡️ Full Garansi Sesuai Durasi</span><span class="text-zinc-400 dark:text-zinc-700">/</span>
-        <span class="text-zinc-700 dark:text-zinc-300">💳 Pembayaran QRIS Otomatis</span><span class="text-zinc-400 dark:text-zinc-700">/</span>
-        <span class="text-zinc-700 dark:text-zinc-300">💬 CS WhatsApp 24/7 Standby</span>
+        <span class="text-zinc-900 dark:text-white font-semibold inline-flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5 text-emerald-500"></i> Pengiriman Instan 0-5 Menit</span><span class="text-zinc-400 dark:text-zinc-700">/</span>
+        <span class="text-zinc-700 dark:text-zinc-300 inline-flex items-center gap-1.5"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-500"></i> Full Garansi Sesuai Durasi</span><span class="text-zinc-400 dark:text-zinc-700">/</span>
+        <span class="text-zinc-700 dark:text-zinc-300 inline-flex items-center gap-1.5"><i data-lucide="qr-code" class="w-3.5 h-3.5 text-amber-500"></i> Pembayaran QRIS Otomatis</span><span class="text-zinc-400 dark:text-zinc-700">/</span>
+        <span class="text-zinc-700 dark:text-zinc-300 inline-flex items-center gap-1.5"><i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-500"></i> CS WhatsApp 24/7 Standby</span>
       </div>
     </section>
 
@@ -608,10 +608,10 @@
         <i data-lucide="shopping-cart" class="w-6 h-6 sm:w-8 sm:h-8"></i>
       </div>
       <div class="space-y-1">
-        <h3 class="text-sm sm:text-base font-bold text-white">Keranjang langganan Anda masih kosong</h3>
-        <p class="text-xs text-zinc-400">Pilih aplikasi premium yang ingin Anda aktifkan hari ini.</p>
+        <h3 class="text-sm sm:text-base font-bold brand-heading">Keranjang langganan Anda masih kosong</h3>
+        <p class="text-xs text-zinc-500 dark:text-zinc-400">Pilih aplikasi premium yang ingin Anda aktifkan hari ini.</p>
       </div>
-      <button type="button" onclick="switchView('store')" class="h-10 sm:h-11 px-5 sm:px-6 bg-white text-obsidian hover:bg-zinc-200 text-[10px] uppercase tracking-[0.18em] font-extrabold inline-flex items-center gap-2 transition-all">
+      <button type="button" onclick="switchView('store')" class="btn-cta-primary h-10 sm:h-11 px-5 sm:px-6 text-[10px] uppercase tracking-[0.18em] font-extrabold inline-flex items-center gap-2 transition-all">
         <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
         <span>Mulai Pilih Aplikasi</span>
       </button>
@@ -1187,12 +1187,12 @@
 
             <div class="grid grid-cols-2 gap-2.5 sm:gap-3 pt-1">
               <button type="button" onclick="addDtlToCart()" class="btn-cta-secondary h-11 sm:h-12 text-[10px] uppercase tracking-wider font-bold flex items-center justify-center gap-1.5 transition-all">
-                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
-                <span>+ Keranjang</span>
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                <span>Keranjang</span>
               </button>
               <button type="button" onclick="buyDtlNowDirectly()" class="btn-cta-primary h-11 sm:h-12 text-[10px] uppercase tracking-wider font-extrabold flex items-center justify-center gap-1.5 transition-all">
-                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-                <span>Langganan Sekarang</span>
+                <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
+                <span>Beli Sekarang</span>
               </button>
             </div>
           </div>
