@@ -68,12 +68,12 @@
       --bg-obsidian: #f8fafc;
       --bg-ink: #ffffff;
       --bg-surface: #f1f5f9;
-      --line: rgba(0, 0, 0, 0.12);
+      --line: #e2e8f0;
       --text-primary: #09090b;
       --text-muted: #64748b;
       --nav-bg: rgba(255, 255, 255, 0.94);
       --card-bg: #ffffff;
-      --input-bg: #f8fafc;
+      --input-bg: #ffffff;
       --promo-bg: #f1f5f9;
     }
 
@@ -93,10 +93,10 @@
     button, input, textarea, select { font: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
     button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-      outline: 1px solid #ffffff;
+      outline: 1px solid #000;
       outline-offset: 2px;
     }
-    ::selection { background: #ffffff; color: #09090b; }
+    ::selection { background: #09090b; color: #ffffff; }
     .font-editorial { font-family: 'Instrument Serif', serif; }
     .hairline { border-color: var(--line); }
     .nav-shell { background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
@@ -116,22 +116,100 @@
     .cat-pill:hover { color: var(--text-primary); }
     .cat-pill.is-active { color: var(--text-primary); border-color: var(--text-primary); font-weight: 600; }
     
-    /* Light Mode Class Overrides */
-    html.light .text-white { color: #09090b !important; }
-    html.light .text-zinc-200, html.light .text-zinc-300, html.light .text-zinc-400 { color: #334155 !important; }
-    html.light .text-zinc-500, html.light .text-zinc-600 { color: #64748b !important; }
-    html.light .bg-obsidian { background-color: var(--bg-obsidian) !important; }
-    html.light .bg-ink { background-color: var(--bg-ink) !important; }
-    html.light .bg-surface { background-color: var(--bg-surface) !important; }
-    html.light .bg-zinc-900, html.light .bg-zinc-950 { background-color: #f1f5f9 !important; }
-    html.light .border-zinc-700, html.light .border-zinc-800 { border-color: rgba(0, 0, 0, 0.12) !important; }
-    html.light .hairline { border-color: var(--line) !important; }
-    html.light .nav-shell { background: var(--nav-bg) !important; }
-    html.light .bg-white { background-color: #09090b !important; color: #ffffff !important; }
-    html.light .text-obsidian { color: #ffffff !important; }
-    html.light ::selection { background: #09090b; color: #ffffff; }
-    html.light input, html.light textarea, html.light select { color: #09090b !important; background-color: #ffffff !important; }
-    html.light aside { background-color: var(--promo-bg) !important; color: #475569 !important; }
+    /* Strict Contrast Elements for Product Cards */
+    .card-badge-tag {
+      background-color: #09090b !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      z-index: 10;
+    }
+    
+    .card-hover-btn-detail {
+      background-color: #09090b !important;
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+    .card-hover-btn-detail:hover {
+      background-color: #27272a !important;
+    }
+
+    .card-hover-btn-cart {
+      background-color: #ffffff !important;
+      color: #09090b !important;
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
+    .card-hover-btn-cart:hover {
+      background-color: #e4e4e7 !important;
+    }
+
+    .header-cart-btn {
+      background-color: #ffffff;
+      color: #09090b;
+    }
+    .header-cart-btn:hover {
+      background-color: #e4e4e7;
+    }
+    .header-cart-badge {
+      background-color: #09090b;
+      color: #ffffff;
+    }
+
+    /* Light Theme Safe Overrides */
+    html.light .header-cart-btn {
+      background-color: #09090b !important;
+      color: #ffffff !important;
+    }
+    html.light .header-cart-btn:hover {
+      background-color: #27272a !important;
+    }
+    html.light .header-cart-badge {
+      background-color: #ffffff !important;
+      color: #09090b !important;
+    }
+
+    html.light .display-title,
+    html.light h1,
+    html.light h2,
+    html.light h3,
+    html.light h4,
+    html.light .product-name,
+    html.light .product-price {
+      color: #09090b !important;
+    }
+    html.light .text-zinc-400,
+    html.light .text-zinc-500 {
+      color: #64748b !important;
+    }
+    html.light .product-image-box {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    html.light .bg-ink {
+      background-color: #ffffff !important;
+    }
+    html.light .bg-obsidian {
+      background-color: #f8fafc !important;
+    }
+    html.light .bg-surface {
+      background-color: #f1f5f9 !important;
+    }
+    html.light .hairline {
+      border-color: #e2e8f0 !important;
+    }
+    html.light .nav-shell {
+      background-color: rgba(255, 255, 255, 0.94) !important;
+      border-color: #e2e8f0 !important;
+    }
+    html.light input, html.light textarea, html.light select {
+      background-color: #ffffff !important;
+      color: #09090b !important;
+      border-color: #cbd5e1 !important;
+    }
+    html.light aside {
+      background-color: #f1f5f9 !important;
+      color: #475569 !important;
+    }
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes scaleUp { from { opacity: 0; transform: scale(0.98) translateY(6px); } to { opacity: 1; transform: scale(1) translateY(0); } }
@@ -227,10 +305,10 @@
         </button>
 
         <!-- Keranjang Belanja Button -->
-        <button type="button" onclick="switchView('cart')" class="h-9 sm:h-10 px-3 sm:px-4 bg-white text-obsidian hover:bg-zinc-200 text-[10px] uppercase tracking-[0.15em] font-bold inline-flex items-center gap-2 transition-colors">
+        <button type="button" onclick="switchView('cart')" class="header-cart-btn h-9 sm:h-10 px-3 sm:px-4 text-[10px] uppercase tracking-[0.15em] font-bold inline-flex items-center gap-2 transition-colors">
           <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i>
           <span class="hidden sm:inline text-[10px] uppercase tracking-[0.15em] font-semibold">Keranjang</span>
-          <span id="cart-badge" class="min-w-[18px] h-[18px] px-1 bg-obsidian text-white text-[9px] font-bold inline-flex items-center justify-center rounded-full">0</span>
+          <span id="cart-badge" class="header-cart-badge min-w-[18px] h-[18px] px-1 text-[9px] font-bold inline-flex items-center justify-center rounded-full">0</span>
         </button>
       </div>
     </div>
@@ -300,7 +378,7 @@
           <div class="w-full lg:w-auto flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-6">
             <label class="relative block w-full sm:w-64 border-b hairline">
               <i data-lucide="search" class="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500"></i>
-              <input type="search" id="search-input" oninput="handleSearch()" placeholder="Cari Canva, ChatGPT, YT..." class="w-full bg-transparent pl-7 pr-2 py-2 text-xs text-white placeholder:text-zinc-600 focus:outline-none">
+              <input type="search" id="search-input" oninput="handleSearch()" placeholder="Cari Canva, ChatGPT, YT..." class="w-full bg-transparent pl-7 pr-2 py-2 text-xs placeholder:text-zinc-500 focus:outline-none">
             </label>
             <div class="flex items-center gap-4 sm:gap-6 overflow-x-auto no-scrollbar pb-1 sm:pb-0" id="category-pills" role="group">
               <button type="button" onclick="filterCategory('all')" id="cat-all" class="cat-pill is-active pb-1.5 sm:pb-2 text-[10px] uppercase tracking-[0.16em] whitespace-nowrap">Semua</button>
@@ -1394,27 +1472,27 @@
         const numStr = String(idx + 1).padStart(2, '0');
         card.innerHTML = `
           <div>
-            <div class="relative overflow-hidden aspect-[4/5] bg-ink mb-2.5 sm:mb-3 border hairline flex items-center justify-center p-6 sm:p-8 group-hover:border-zinc-500 transition-colors">
+            <div class="product-image-box relative overflow-hidden aspect-[4/5] bg-ink mb-2.5 sm:mb-3 border hairline flex items-center justify-center p-6 sm:p-8 group-hover:border-zinc-500 transition-colors">
               <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" class="product-image w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" loading="lazy">
-              <span class="absolute left-2 top-2 sm:left-2.5 sm:top-2.5 bg-obsidian/90 px-1.5 py-0.5 sm:px-2 text-[7.5px] sm:text-[8px] uppercase tracking-widest font-semibold text-white border hairline">
+              <span class="card-badge-tag absolute left-2 top-2 sm:left-2.5 sm:top-2.5 px-2 py-0.5 text-[7.5px] sm:text-[8px] uppercase tracking-widest font-bold">
                 ${escapeHTML(p.badge || 'Digital')}
               </span>
               <div class="absolute inset-x-2 bottom-2 hidden sm:flex opacity-0 group-hover:opacity-100 transition-opacity gap-2">
-                <button type="button" onclick="event.stopPropagation(); openProductDetail('${escapeHTML(p.id)}')" class="flex-1 h-8 bg-obsidian/95 text-white text-[9px] uppercase tracking-wider font-bold border hairline">Lihat Detail</button>
-                <button type="button" onclick="event.stopPropagation(); addToCart('${escapeHTML(p.id)}')" class="h-8 px-2.5 bg-white text-obsidian text-xs font-bold" title="Tambah"><i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i></button>
+                <button type="button" onclick="event.stopPropagation(); openProductDetail('${escapeHTML(p.id)}')" class="card-hover-btn-detail flex-1 h-8 text-[9px] uppercase tracking-wider font-bold transition-colors">Lihat Detail</button>
+                <button type="button" onclick="event.stopPropagation(); addToCart('${escapeHTML(p.id)}')" class="card-hover-btn-cart h-8 px-2.5 text-xs font-bold transition-colors" title="Tambah"><i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i></button>
               </div>
             </div>
             <div class="space-y-0.5 sm:space-y-1">
               <div class="flex items-center justify-between text-[8px] sm:text-[9px] uppercase tracking-[0.16em] text-zinc-500">
                 <span>${numStr} / ${escapeHTML(p.category)}</span>
-                <span class="text-zinc-400 font-semibold">★ ${p.rating || 5.0}</span>
+                <span class="text-amber-500 font-semibold">★ ${p.rating || 5.0}</span>
               </div>
               <h3 class="product-name font-semibold text-xs sm:text-sm leading-snug line-clamp-1">${escapeHTML(p.name)}</h3>
             </div>
           </div>
           <div class="pt-2 sm:pt-3 mt-1.5 sm:mt-2 border-t hairline flex items-baseline justify-between">
-            <span class="text-xs sm:text-sm font-bold font-mono text-white">${formatRupiah(p.price)}</span>
-            <button type="button" onclick="event.stopPropagation(); addToCart('${escapeHTML(p.id)}')" class="sm:hidden p-1 bg-white text-obsidian rounded" title="Tambah">
+            <span class="product-price text-xs sm:text-sm font-bold font-mono">${formatRupiah(p.price)}</span>
+            <button type="button" onclick="event.stopPropagation(); addToCart('${escapeHTML(p.id)}')" class="card-hover-btn-cart sm:hidden p-1.5 rounded" title="Tambah">
               <i data-lucide="plus" class="w-3 h-3"></i>
             </button>
           </div>
